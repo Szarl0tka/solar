@@ -1,7 +1,7 @@
 
 // Scene
 var scene = new THREE.Scene();
-scene.background = new THREE.Color( 0x000000 );
+scene.background = new THREE.TextureLoader( ).load( 'img/scene-background.jpg' );
 var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
 
@@ -15,7 +15,7 @@ controls = new THREE.OrbitControls( camera, renderer.domElement )
 
 // Sun
 var sunGeo = new THREE.SphereGeometry( 20, 32, 32 );
-var sunMat = new THREE.MeshPhongMaterial( { color: 0xF8F02B, specular: 0xff0000, shininess: 0, wireframe: true } );
+var sunMat = new THREE.MeshPhongMaterial( { color: 0xF8F02B, ambient: 0xaaaaaa, specular: 0x333333, shininess: 15, map: new THREE.TextureLoader( ).load( 'img/sun-texture.jpg' )} );
 var sun = new THREE.Mesh( sunGeo, sunMat );
 sun.position.y = -15;
  // sun.rotation.z =0.2;
@@ -23,25 +23,26 @@ sun.rotation.x =0.5;
 sun.rotation.y = 0.5;
 scene.add( sun );
 
-var axis = new THREE.AxisHelper(100);
-sun.add( axis );
+// var axis = new THREE.AxisHelper(100);
+// sun.add( axis );
 
 // Earth
 var earthGeo = new THREE.SphereGeometry( 8, 32, 32 );
-var earthMat = new THREE.MeshPhongMaterial( { color: 0x008B8B, specular: 0xff0000, shininess: 0/*, map: new THREE.TextureLoader( ).load( 'img/earth-texture.jpg' )*/ } );
+var earthMat = new THREE.MeshPhongMaterial( { color: 0xaaaaaa, ambient: 0xaaaaaa, specular: 0x333333, shininess: 15, map: new THREE.TextureLoader( ).load( 'img/earth-texture.jpg' ), specularMap: new THREE.TextureLoader( ).load( 'img/earth-specular.png' ), normalMap: new THREE.TextureLoader( ).load( 'img/earth-normal.jpg' ) } );
 var earth = new THREE.Mesh( earthGeo, earthMat );
 earth.position.x = 75;
 earth.rotation.y = -0.25;
 earth.rotation.z =0.3;
 sun.add( earth );
 
-var axis2 = new THREE.AxisHelper(100);
-earth.add( axis2 );
+
+// var axis2 = new THREE.AxisHelper(100);
+// earth.add( axis2 );
 
 
 // Moon
 var moonGeo = new THREE.SphereGeometry( 2, 32, 32 );
-var moonMat = new THREE.MeshPhongMaterial( { color: 0xffffff, specular: 0xff0000, shininess: 0 } );
+var moonMat = new THREE.MeshPhongMaterial( { color: 0xaaaaaa, ambient: 0xaaaaaa, specular: 0x333333, shininess: 0, map: new THREE.TextureLoader( ).load( 'img/moon-texture.jpg' ) } );
 var moon = new THREE.Mesh( moonGeo, moonMat );
 moon.position.x = 25;
 
@@ -64,9 +65,9 @@ camera.position.z = 80;
 var update = function ( )
 {
 	
-	// sun.rotation.y += 0.005;
-	// earth.rotation.y += 0.015;
-	// moon.rotation.y += 0.020;
+	sun.rotation.y += 0.005;
+	earth.rotation.y += 0.015;
+	moon.rotation.y += 0.020;
 };
 
 // draw Scene
