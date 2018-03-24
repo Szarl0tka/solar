@@ -29,9 +29,8 @@ scene.add( sun );
 var earthGeo = new THREE.SphereGeometry( 8, 32, 32 );
 var earthMat = new THREE.MeshPhongMaterial( { color: 0xaaaaaa, ambient: 0xaaaaaa, specular: 0x333333, shininess: 15, map: new THREE.TextureLoader( ).load( 'img/earth-texture.jpg' ), specularMap: new THREE.TextureLoader( ).load( 'img/earth-specular.png' ), normalMap: new THREE.TextureLoader( ).load( 'img/earth-normal.jpg' ) } );
 var earth = new THREE.Mesh( earthGeo, earthMat );
-earth.position.x = 75;
-earth.rotation.y = -0.25;
-earth.rotation.z =0.3;
+earth.position.set( 75, 0, 0 );
+earth.rotation.set( 0, -0.25, 0.3 );
 sun.add( earth );
 
 
@@ -57,7 +56,7 @@ var light = new THREE.DirectionalLight( 0xffffff );
 light.position.set( 0, 1, 1 ).normalize();
 scene.add(light);
 
-camera.position.z = 80;
+camera.position.set( 0, 0, 80 );
 
 
 // App Logic
