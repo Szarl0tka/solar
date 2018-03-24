@@ -17,10 +17,9 @@ controls = new THREE.OrbitControls( camera, renderer.domElement )
 var sunGeo = new THREE.SphereGeometry( 20, 32, 32 );
 var sunMat = new THREE.MeshPhongMaterial( { color: 0xF8F02B, ambient: 0xaaaaaa, specular: 0x333333, shininess: 15, map: new THREE.TextureLoader( ).load( 'img/sun-texture.jpg' )} );
 var sun = new THREE.Mesh( sunGeo, sunMat );
-sun.position.y = -15;
- // sun.rotation.z =0.2;
-sun.rotation.x =0.5;
-sun.rotation.y = 0.5;
+
+sun.position.set(0,-15,0);
+sun.rotation.set(0.5,0.5,0);
 scene.add( sun );
 
 // var axis = new THREE.AxisHelper(100);
@@ -42,7 +41,7 @@ sun.add( earth );
 
 // Moon
 var moonGeo = new THREE.SphereGeometry( 2, 32, 32 );
-var moonMat = new THREE.MeshPhongMaterial( { color: 0xaaaaaa, ambient: 0xaaaaaa, specular: 0x333333, shininess: 0, map: new THREE.TextureLoader( ).load( 'img/moon-texture.jpg' ) } );
+var moonMat = new THREE.MeshPhongMaterial( { color: 0xaaaaaa, ambient: 0xffffff, specular: 0x333333, shininess: 0, map: new THREE.TextureLoader( ).load( 'img/moon-texture.jpg' ) } );
 var moon = new THREE.Mesh( moonGeo, moonMat );
 moon.position.x = 25;
 
