@@ -1,7 +1,7 @@
 
 // Scene
 var scene = new THREE.Scene();
-var initialHeight = window.innerHeight - 120;
+var initialHeight = window.innerHeight - 140;
 scene.background = new THREE.TextureLoader( ).load( 'img/scene-background.jpg' );
 var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / initialHeight, 0.1, 1000 );
 
@@ -13,7 +13,7 @@ document.body.appendChild( renderer.domElement );
 window.addEventListener( 'resize', function( ) 
 {
 	var width = window.innerWidth;
-	var height = window.innerHeight - 120;	
+	var height = window.innerHeight - 140;	
 	renderer.setSize( width, height );
 	camera.aspect = width / height;
 	camera.updateProjectionMatrix();

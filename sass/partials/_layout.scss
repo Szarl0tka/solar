@@ -4,20 +4,36 @@
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between; 
-	background: #686868; 
+	justify-content: space-between;
+	z-index: 2;	 
 }
 
 .header, .footer {
 	display: flex;
-	height: 60px;
+	height: 70px;
+	color: white;
+	padding: 0 30px;
+	align-items: center;
 }
 
-.header {
+.content {
+	display: flex;
+	flex: 1;
+	position: absolute;
+	z-index: 1;
+	top: 70px;
+}
+
+/* Header */
+.header { 
+	justify-content: flex-end;
+	background: linear-gradient(#050615, #0b0c27);
 	&-logo { 
 		display: flex; 
 		flex: 0.33; 
 		justify-content: center; 
+		height: 100%;
+		padding: 5px 0;
 		.logo {
 			max-height: 100%;
 			width: auto;
@@ -27,15 +43,67 @@
 		display: flex;
 		flex: 0.33; 
 		justify-content: flex-end; 
+		.help {
+			font-weight: 700;
+			font-size: 24px;
+			width: 40px;
+			height: 40px;
+			border-radius: 20px;
+			border: 1px solid white;
+			display: flex; 
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+		}
 	}
 }
+/* end Header */
 
-.content {
-	display: flex;
-	flex: 1;
-	position: absolute;
-	top: 60px;
-}
-
+/* Footer */
 .footer {
+	justify-content: space-between;
+	background: linear-gradient(#0b0c27, #050615);
+	text-align: center;
+
+	.title {
+		font-weight: 400;
+		text-transform: uppercase;
+		font-size: 21px;
+		letter-spacing: 3px;
+	}
+	.name {
+		font-weight: 700;
+		font-size: 16px;
+	}
+	.date {		
+		padding-top: 5px;
+		letter-spacing: 5px;
+	}
+}
+/* end Footer */
+
+@media screen and (max-width: 768px) {
+	.header {
+		justify-content: space-between;
+	}
+	.footer {
+		flex-direction: column;
+		justify-content: center;
+		&-info {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding-top: 5px;
+		}
+		.title { 
+			font-size: 16px;
+		}
+		.name { 
+			font-size: 14px;
+		}
+		.date {		
+			padding-top: 0;
+			padding-left: 10px;
+		}
+	}
 }
