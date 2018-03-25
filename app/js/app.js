@@ -1,15 +1,24 @@
 
 // Scene
 var scene = new THREE.Scene();
+var initialHeight = window.innerHeight - 120;
 scene.background = new THREE.TextureLoader( ).load( 'img/scene-background.jpg' );
-var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / initialHeight, 0.1, 1000 );
 
 
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth, window.innerHeight );
+var renderer = new THREE.WebGLRenderer( { canvas: document.getElementById('appContent'), antialias: true } );
+renderer.setSize( window.innerWidth, initialHeight );
 document.body.appendChild( renderer.domElement );
 
+window.addEventListener( 'resize', function( ) 
+{
+	var width = window.innerWidth;
+	var height = window.innerHeight - 120;	
+	renderer.setSize( width, height );
+	camera.aspect = width / height;
+	camera.updateProjectionMatrix();
 
+} );
 
 controls = new THREE.OrbitControls( camera, renderer.domElement )
 
@@ -26,7 +35,7 @@ scene.add( sun );
 // sun.add( axis );
 
 // Earth
-var earthGeo = new THREE.SphereGeometry( 8, 32, 32 );
+var earthGeo = new THREE.SphereGeometry( 8, 32, 32 );;
 var earthMat = new THREE.MeshPhongMaterial( { color: 0xaaaaaa, ambient: 0xaaaaaa, specular: 0x333333, shininess: 15, map: new THREE.TextureLoader( ).load( 'img/earth-texture.jpg' ), specularMap: new THREE.TextureLoader( ).load( 'img/earth-specular.png' ), normalMap: new THREE.TextureLoader( ).load( 'img/earth-normal.jpg' ) } );
 var earth = new THREE.Mesh( earthGeo, earthMat );
 earth.position.set( 75, 0, 0 );
