@@ -54,7 +54,12 @@
 			align-items: center;
 			justify-content: center;
 			cursor: pointer;
+			transition: border-width ease-in-out .3s;
+			&:hover {
+				border-width: 3px;			
+			}
 		}
+
 	}
 }
 /* end Header */

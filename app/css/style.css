@@ -72,7 +72,10 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
-        cursor: pointer; }
+        cursor: pointer;
+        transition: border-width ease-in-out .3s; }
+        body .header-cta .help:hover {
+          border-width: 3px; }
   body .footer {
     justify-content: space-between;
     background: linear-gradient(#0b0c27, #050615);
@@ -138,15 +141,18 @@ body {
         letter-spacing: 2px;
         font-weight: 700;
         font-size: 15px;
-        cursor: pointer; }
+        cursor: pointer;
+        transition: all ease-in-out .3s; }
+        body .modal-content .start:hover {
+          background: #171d50; }
+  @media screen and (max-width: 991px) {
+    body .modal-content {
+      max-width: 80%; } }
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0; }
   to {
     opacity: 1; } }
-  @media screen and (max-width: 991px) {
-    body .modal-content {
-      max-width: 80%; } }
 @-webkit-keyframes fadeOut {
   from {
     opacity: 1; }
